@@ -1,24 +1,34 @@
 import java.util.Scanner;
 
 public class Mambo {
+    private static final String line = "\n────────────────────────────────────────────────────────────────\n";
+
+    private static String response(String message) {
+        return line + message + line;
+    }
+
     public static void main(String[] args) {
-        final String line = "\n────────────────────────────────────────────────────────────────\n";
 
         Scanner scanner = new Scanner(System.in);
         boolean isRunning = true;
+        TaskList list = new TaskList();
 
-        System.out.println(line + "Hi! I'm Mambo, your personal assistant and chatbot!\n"
-                                + "What can I do for you today? ei, ei mun!" + line);
+        System.out.println(response("hi! I'm Mambo, your personal assistant and chatbot!\n"
+                                    + "what can I do for you today? ei, ei mun!"));
         while (isRunning) {
             String input = scanner.nextLine();
 
             switch (input) {
                 case "bye":
-                    System.out.println(line + "Byee, see you again!" + line);
+                    System.out.println(response("byee, see you again!"));
                     isRunning = false;
                     break;
+                case "list":
+                    System.out.println(response(list.toString()));
+                    break;
                 default:
-                    System.out.println(line + input + line);
+                    list.addToList(input);
+                    System.out.println(response("added: " + input));
             }
         }
 
