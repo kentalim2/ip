@@ -1,6 +1,6 @@
 /**
  * Represents a task that is to be tracked by the chatbot
- * Supports common functionality such as marking a task as done
+ * Supports common functionality such as marking/unmarking a task as done
  *
  * @author kentalim2
  */

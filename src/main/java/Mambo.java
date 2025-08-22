@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Mambo {
@@ -7,7 +8,7 @@ public class Mambo {
             """;
 
     private enum Command {
-        BYE, MARK, UNMARK, LIST, UNKNOWN
+        BYE, MARK, UNMARK, LIST, UNKNOWN, TODO, EVENT, DEADLINE
     }
 
     /**
@@ -21,7 +22,7 @@ public class Mambo {
     }
 
     /**
-     * Takes a line of input that is given to the chatbot and parses out
+     * Takes a line of input that is given to the chatbot and looks out for
      * specific commands that the chatbot offers functionality for
      *
      * @param input the line of input from user
@@ -32,21 +33,27 @@ public class Mambo {
             return Command.BYE;
         } else if (input.equalsIgnoreCase("list")) {
             return Command.LIST;
-        } else if (input.startsWith("mark")) {
+        } else if (input.toLowerCase().startsWith("mark")) {
             return Command.MARK;
-        } else if (input.startsWith("unmark")) {
+        } else if (input.toLowerCase().startsWith("unmark")) {
             return Command.UNMARK;
+        } else if (input.toLowerCase().startsWith("deadline")) {
+            return Command.DEADLINE;
+        } else if (input.toLowerCase().startsWith("event")) {
+            return Command.EVENT;
+        } else if (input.toLowerCase().startsWith("todo")) {
+            return Command.TODO;
         } else {
             return Command.UNKNOWN;
         }
     }
 
     /**
-     * Given an input that uses a command which has an argument which is an integer,
-     * returns that argument as a string
+     * Given an input that uses a command which has an argument, returns that argument as a string
+     *
      * @param input given to chatbot
      * @param command the command which the chatbot is trying to perform
-     * @return numerical argument
+     * @return string representation of argument
      */
     private static String getArgument(Command command, String input) {
         switch (command) {
@@ -54,13 +61,20 @@ public class Mambo {
                 return input.substring(4).trim();
             case UNMARK:
                 return input.substring(6).trim();
+            case TODO:
+                return input.substring(4).trim();
+            case EVENT:
+                return input.substring(5).trim();
+            case DEADLINE:
+                return input.substring(8).trim();
             default:
                 return "";
         }
     }
 
     /**
-     * Handles the marking of tasks on the list
+     * Handles the marking of tasks on the list by parsing out index of list the
+     * user wants to mark and passing it into markTask()
      *
      * @param argument the index of the task to mark
      * @param list the list of tasks
@@ -71,7 +85,8 @@ public class Mambo {
     }
 
     /**
-     * Handles the unmarking of tasks on the list
+     * Handles the unmarking of tasks on the list by parsing out index of list the
+     * user wants to unmark and passing it into unmarkTask()
      *
      * @param argument the index of the task to unmark
      * @param list the list of tasks
@@ -81,6 +96,13 @@ public class Mambo {
         return list.unmarkTask(index);
     }
 
+    /**
+     * Chatbot ends and exits when user types "bye"
+     * Show list when user types "list"
+     * When user types "mark" and "unmark", marks and unmarks tasks in list respectively
+     * Adds ToDoTask, Event and Deadline task when respective task types are entered by user
+     *
+     */
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
@@ -109,9 +131,25 @@ public class Mambo {
                     String unmarked = getArgument(command, input);
                     System.out.println(response(handleUnmark(unmarked, list)));
                     break;
+                case TODO:
+                    String task = getArgument(command, input);
+                    System.out.println(response(list.addToList(new ToDoTask(task))));
+                    break;
+                case EVENT:
+                    //splits the event task into [description, start, end]
+                    String[] eventDetails = getArgument(command, input).split("/from|/to");
+                    System.out.println(response(list.addToList(new EventTask(eventDetails[0].trim(),
+                                                                             eventDetails[1].trim(),
+                                                                             eventDetails[2].trim()))));
+                    break;
+                case DEADLINE:
+                    //splits the deadline task into [description, deadline]
+                    String[] taskDetails = getArgument(command, input).split("/by");
+                    System.out.println(response(list.addToList(new DeadlineTask(taskDetails[0].trim(),
+                                                                                taskDetails[1].trim()))));
+                    break;
                 case UNKNOWN:
-                    list.addToList(new Task(input));
-                    System.out.println(response("I've added the task to your list:\n" + input));
+                    System.out.println(response(input));
                     break;
             }
         }

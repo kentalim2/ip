@@ -10,8 +10,10 @@ public class TaskList {
     private LinkedList<Task> list = new LinkedList<>();
 
 
-    public void addToList(Task task) {
+    public String addToList(Task task) {
         list.add(task);
+        return String.format("I've added the task to your list:\n   %s\nyou have %d tasks in your list!",
+                             task, list.size());
     }
 
     /**
