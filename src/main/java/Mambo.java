@@ -4,6 +4,7 @@ public class Mambo {
     private static final String line = "\n───────────────────────────────────────────────────────────────"
             + "───────────────────────────────────────────────────────────────────────\n";
 
+    // list of commands available communicated by the chatbot at the start
     private static final String commandList = "List of commands:\n"
             + "\"bye\": exit the chat\n"
             + "\"list\": show the current list\n"
@@ -62,7 +63,7 @@ public class Mambo {
 
     /**
      * Given an input that uses a command which has an argument, returns that argument as a string
-     *
+     * by removing the letters of the command from the input
      * @param input given to chatbot
      * @param command the command which the chatbot is trying to perform
      * @return string representation of argument
@@ -90,12 +91,14 @@ public class Mambo {
         try {
             int index = Integer.parseInt(argument);
 
+            // to catch if trying to access out of bounds index
             if (index < 1 || index > list.listSize()) {
                 throw new MamboException("your list doesnt have a task at that number dummy!");
             }
 
             return list.markTask(index);
         } catch (NumberFormatException e) {
+            // throw error when an exception is caught due to the argument not being an integer
             throw new MamboException("hey!! this is not the right way to use mark. "
                     + "make sure you follow the format \"mark *integer*\"!");
         }
@@ -114,12 +117,14 @@ public class Mambo {
         try {
             int index = Integer.parseInt(argument);
 
+            // to catch if trying to access out of bounds index
             if (index < 1 || index > list.listSize()) {
                 throw new MamboException("your list doesnt have a task at that number dummy!");
             }
 
             return list.unmarkTask(index);
         } catch (NumberFormatException e) {
+            // throw error when an exception is caught due to the argument not being an integer
             throw new MamboException("hey!! this is not the right way to use unmark. "
                     + "make sure you follow the format \"unmark *integer*\"!");
         }
@@ -139,12 +144,14 @@ public class Mambo {
         try {
             int index = Integer.parseInt(argument);
 
+            // to catch if trying to access out of bounds index
             if (index < 1 || index > list.listSize()) {
                 throw new MamboException("theres nothing to delete at that number!");
             }
             return list.deleteTask(index);
 
         } catch (NumberFormatException e) {
+            // throw error when an exception is caught due to the argument not being an integer
             throw new MamboException("hey!! this is not the right way to use delete. "
                     + "make sure you follow the format \"delete *integer*\"!");
         }
@@ -165,11 +172,13 @@ public class Mambo {
                                            Command command, TaskList list) throws MamboException {
         switch (command) {
             case TODO:
+                // if no description attached to todo, throw an error message
                 if (taskDetails[0].isEmpty()) {
                     throw new MamboException("your description of a todo cant be empty!");
                 }
                 return list.addToList(new ToDoTask(taskDetails[0]));
             case DEADLINE:
+                // if deadline is not formatted correctly, [description, deadline], throw an error message
                 if (taskDetails.length != 2) {
                     throw new MamboException("are you sure you are following the proper formatfor deadline tasks? "
                             + "it should look like this: \"deadline *description* /by *time/date*\"");
@@ -177,6 +186,7 @@ public class Mambo {
                 return list.addToList(new DeadlineTask(taskDetails[0].trim(),
                         taskDetails[1].trim()));
             case EVENT:
+                // if event is not formatted correctly, [description, start, end], throw an error
                 if (taskDetails.length != 3) {
                     throw new MamboException("are you sure you are following the proper format for events? "
                             + "it should look like this: \"event *description* /from *time* /to time\"");
@@ -231,12 +241,12 @@ public class Mambo {
                         System.out.println(respond(handleTaskAdding(task, command, list)));
                         break;
                     case EVENT:
-                        //splits the event task into [description, start, end]
+                        // splits the event task into [description, start, end]
                         String[] eventDetails = getArgument(command, input).split("/from|/to");
                         System.out.println(respond(handleTaskAdding(eventDetails, command, list)));
                         break;
                     case DEADLINE:
-                        //splits the deadline task into [description, deadline]
+                        // splits the deadline task into [description, deadline]
                         String[] taskDetails = getArgument(command, input).split("/by");
                         System.out.println(respond(handleTaskAdding(taskDetails, command, list)));
                         break;
@@ -245,7 +255,7 @@ public class Mambo {
                         System.out.println(respond(handleDelete(toDelete, list)));
                         break;
                 }
-            //catch any exceptions thrown by event, deadline and todo
+            // catch any exceptions thrown by any of the commands
             } catch (MamboException e) {
                 System.out.println(respond(e.getMessage()));
             }
