@@ -16,28 +16,42 @@ public class TaskList {
                 task, list.size());
     }
 
+    public int listSize() {
+        return list.size();
+    }
+
     /**
-     * Marks the task at index as done
+     * Marks the task at index as done.
+     * Will send an error message if task is already marked as done.
      *
      * @param index of task to be marked done
      * @return chatbot message stating that the operation is done
      */
     public String markTask(int index) {
         Task target = list.get(index - 1);
-        target.mark();
-        return String.format("nice job! this task is done:\n%s", target);
+        if (target.isMarked()) {
+            return "thats strange, your task is already marked as completed!";
+        } else {
+            target.mark();
+            return String.format("nice job! this task is done:\n%s", target);
+        }
     }
 
     /**
-     * Unmarks the task at index
+     * Unmarks the task at index.
+     * Will send error message if task is already set as unmarked.
      *
      * @param index of task to be unmarked
      * @return chatbot message stating that the operation is done
      */
     public String unmarkTask(int index) {
         Task target = list.get(index - 1);
-        target.unmark();
-        return String.format("I've marked this task as not done:\n%s", target);
+        if (!target.isMarked()) {
+            return "thats strange, your task is already unmarked!";
+        } else {
+            target.unmark();
+            return String.format("I've marked this task as not done:\n%s", target);
+        }
     }
 
     @Override
