@@ -54,6 +54,18 @@ public class TaskList {
         }
     }
 
+    /**
+     * Deletes the task at index
+     * @param index
+     * @return chatbot message stating that the task has been removed
+     */
+    public String deleteTask(int index) {
+        Task target = list.remove(index - 1);
+        return String.format("okay! I've removed this task from your list:\n    %s\n"
+                + "you now have %d tasks remaining!", target, list.size());
+
+    }
+
     @Override
     public String toString() {
         StringBuilder message = new StringBuilder();

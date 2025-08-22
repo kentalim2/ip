@@ -11,11 +11,12 @@ public class Mambo {
             + "\"deadline *task* /by *deadline*\": add a deadline task by the specified deadline\n"
             + "\"event *task* /from *start* /to *end*\": add event task with start and end time/date\n"
             + "\"mark *number*\": mark a task at *number* on the list to be done\n"
-            + "\"unmark *number*\": unmark a task at *number* on the list";
+            + "\"unmark *number*\": unmark a task at *number* on the list\n"
+            + "\"delete *number*\": delete task number *number* on the list";
 
 
     private enum Command {
-        BYE, MARK, UNMARK, LIST, TODO, EVENT, DEADLINE
+        BYE, MARK, UNMARK, LIST, TODO, EVENT, DEADLINE, DELETE
     }
 
     /**
@@ -51,6 +52,8 @@ public class Mambo {
                 return Command.EVENT;
             } else if (input.toLowerCase().startsWith("todo")) {
                 return Command.TODO;
+            } else if (input.toLowerCase().startsWith("delete")) {
+                return Command.DELETE;
             } else {
                 throw new MamboException("ummm not sure what that's supposed to mean. "
                         + "try one of the commands listed!");
@@ -68,7 +71,7 @@ public class Mambo {
         return switch (command) {
             case MARK, TODO -> input.substring(4).trim();
             case EVENT -> input.substring(5).trim();
-            case UNMARK -> input.substring(6).trim();
+            case UNMARK, DELETE -> input.substring(6).trim();
             case DEADLINE -> input.substring(8).trim();
             default -> "";
         };
@@ -123,13 +126,38 @@ public class Mambo {
     }
 
     /**
+     * Handles the deletion of a task from the list
+     * Throws an exception when trying to delete a task not in the list or integers
+     * are not used to refer to the task trying to be deleted
+     *
+     * @param argument the number of the task to be deleted
+     * @param list the current task list
+     * @return chatbot message to be sent based on outcome of function
+     * @throws MamboException when trying to access out of bounds task or wrong command format
+     */
+    private static String handleDelete(String argument, TaskList list) throws MamboException {
+        try {
+            int index = Integer.parseInt(argument);
+
+            if (index < 1 || index > list.listSize()) {
+                throw new MamboException("theres nothing to delete at that number!");
+            }
+            return list.deleteTask(index);
+
+        } catch (NumberFormatException e) {
+            throw new MamboException("hey!! this is not the right way to use delete. "
+                    + "make sure you follow the format \"delete *integer*\"!");
+        }
+    }
+
+    /**
      * Handles the adding of various tasks to task list.
      * Throws exception if improper format is used by making sure the comparing the size
      * of the split() array returned with the number of segments in each command
      *
-     * @param taskDetails
-     * @param command
-     * @param list
+     * @param taskDetails created by calling split on the input to divide input into sections
+     * @param command the command that it is executing
+     * @param list the current task list
      * @return String representation of what chatbot will send back to user
      * @throws MamboException which is caused by wrong formatting of command
      */
@@ -159,6 +187,7 @@ public class Mambo {
         }
         return "";
     }
+
 
     /**
      * Chatbot ends and exits when user types "bye"
@@ -210,6 +239,10 @@ public class Mambo {
                         //splits the deadline task into [description, deadline]
                         String[] taskDetails = getArgument(command, input).split("/by");
                         System.out.println(respond(handleTaskAdding(taskDetails, command, list)));
+                        break;
+                    case DELETE:
+                        String toDelete = getArgument(command, input);
+                        System.out.println(respond(handleDelete(toDelete, list)));
                         break;
                 }
             //catch any exceptions thrown by event, deadline and todo

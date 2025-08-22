@@ -1,12 +1,27 @@
 hi
 todo die
-event meeting /from 4pm /to 6pm
+event meet /from 2 /to 4
+todo
 deadline work /by monday
+deadline work
+event ball /from 10 to 5
+   todo say goodbye
 list
 mark 1
-mark 3
+mark 4
 list
+mark 4
+unmark 2
 unmark 1
 list
-blah
+mark 3.14
+mark two
+unmark two
+delete 2
+list
+delete 3
+delete one
+delete 1.15
+list
+byee
 bye
