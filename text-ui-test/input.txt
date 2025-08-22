@@ -1,0 +1,12 @@
+hi
+todo die
+event meeting /from 4pm /to 6pm
+deadline work /by monday
+list
+mark 1
+mark 3
+list
+unmark 1
+list
+blah
+bye

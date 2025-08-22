@@ -1,11 +1,18 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Mambo {
-    private static final String line = """
-            \n─────────────────────────────────\
-            ──────────────────────────────
-            """;
+    private static final String line = "\n────────────────────────────────"
+            + "──────────────────────────────\n";
+
+    private static final String commandList = "List of commands:\n"
+            + "\"bye\": exit the chat\n"
+            + "\"list\": show the current list\n"
+            + "\"todo (task)\": add a todo task to the list\n"
+            + "\"deadline (task) /by (deadline)\": add a deadline task by the specified deadline\n"
+            + "\"event (task) /from (start) /to (end)\": add event task with start and end time/date\n"
+            + "\"mark (number)\": mark a task at (number) on the list to be done\n"
+            + "\"unmark (number)\": unmark a task at (number) on the list";
+
 
     private enum Command {
         BYE, MARK, UNMARK, LIST, UNKNOWN, TODO, EVENT, DEADLINE
@@ -57,14 +64,12 @@ public class Mambo {
      */
     private static String getArgument(Command command, String input) {
         switch (command) {
-            case MARK:
-                return input.substring(4).trim();
-            case UNMARK:
-                return input.substring(6).trim();
-            case TODO:
+            case MARK, TODO:
                 return input.substring(4).trim();
             case EVENT:
                 return input.substring(5).trim();
+            case UNMARK:
+                return input.substring(6).trim();
             case DEADLINE:
                 return input.substring(8).trim();
             default:
@@ -110,7 +115,8 @@ public class Mambo {
         TaskList list = new TaskList();
 
         System.out.println(response("hi! I'm Mambo, your personal assistant and chatbot!\n"
-                                    + "what can I do for you today? ei, ei mun!"));
+                + "what can I do for you today? ei, ei mun!")
+                + commandList + line);
         while (isRunning) {
             String input = scanner.nextLine().trim();
             Command command = parseCommand(input);
@@ -139,17 +145,18 @@ public class Mambo {
                     //splits the event task into [description, start, end]
                     String[] eventDetails = getArgument(command, input).split("/from|/to");
                     System.out.println(response(list.addToList(new EventTask(eventDetails[0].trim(),
-                                                                             eventDetails[1].trim(),
-                                                                             eventDetails[2].trim()))));
+                            eventDetails[1].trim(),
+                            eventDetails[2].trim()))));
                     break;
                 case DEADLINE:
                     //splits the deadline task into [description, deadline]
                     String[] taskDetails = getArgument(command, input).split("/by");
                     System.out.println(response(list.addToList(new DeadlineTask(taskDetails[0].trim(),
-                                                                                taskDetails[1].trim()))));
+                            taskDetails[1].trim()))));
                     break;
                 case UNKNOWN:
-                    System.out.println(response(input));
+                    System.out.println(response("ummm not sure what that's supposed to mean."
+                            + "try one of the commands listed!"));
                     break;
             }
         }
