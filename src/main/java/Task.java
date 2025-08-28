@@ -4,7 +4,7 @@
  *
  * @author kentalim2
  */
-public class Task {
+public abstract class Task {
     private boolean isDone;
     private final String description;
 
@@ -14,9 +14,15 @@ public class Task {
      *
      * @param description of the task
      */
-    public Task(String description) {
+    public Task(String description, boolean isDone) {
         this.description = description;
-        this.isDone = false;
+        this.isDone = isDone;
+    }
+
+    public abstract String convertToFileFormat();
+
+    public String getDescription() {
+        return this.description;
     }
 
     public boolean isMarked() {
@@ -38,7 +44,6 @@ public class Task {
         } else {
             return String.format("[ ] %s", this.description);
         }
-
     }
 
 
