@@ -16,6 +16,10 @@ public class TaskList {
                 task, list.size());
     }
 
+    public Task getTask(int index) {
+        return list.get(index - 1);
+    }
+
     public int listSize() {
         return list.size();
     }
