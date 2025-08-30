@@ -1,3 +1,5 @@
+package Mambo.parser;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -109,7 +111,6 @@ public class DateTimeParser {
 
     public static String formatDateTime(LocalDateTime dateTime) {
         return dateTime.format(DISPLAY_DATETIME);
-
     }
 
     public static String formatDate(LocalDate date) {

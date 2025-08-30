@@ -1,3 +1,9 @@
+package Mambo.command;
+
+import Mambo.task.TaskList;
+import Mambo.TaskListFile;
+import Mambo.Ui;
+
 public class ByeCommand extends Command {
 
     public ByeCommand(String argument) {

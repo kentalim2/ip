@@ -1,3 +1,9 @@
+package Mambo;
+
+import Mambo.parser.Parser;
+import Mambo.task.Task;
+import Mambo.task.TaskList;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -37,10 +43,10 @@ public class TaskListFile {
     }
 
     /**
-     * Returns the TaskList that has been saved locally by reading through the file of inputs and
+     * Returns the Mambo.Task.Task.TaskList that has been saved locally by reading through the file of inputs and
      * adding the specific tasks to the list
      *
-     * @return TaskList to be passed into the chatbot as its current TaskList
+     * @return Mambo.Task.Task.TaskList to be passed into the chatbot as its current Mambo.Task.Task.TaskList
      */
     public TaskList loadFile() {
         TaskList tasks = new TaskList();
@@ -66,7 +72,7 @@ public class TaskListFile {
      * Save the given tasklist into the system by writing over the previous
      * save file.
      *
-     * @param list TaskList to be saved into the system locally
+     * @param list Mambo.Task.Task.TaskList to be saved into the system locally
      */
     public void saveFile(TaskList list) {
         try {

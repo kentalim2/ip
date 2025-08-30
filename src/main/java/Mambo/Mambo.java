@@ -1,9 +1,13 @@
-import java.util.Scanner;
+package Mambo;
+
+import Mambo.command.Command;
+import Mambo.parser.Parser;
+import Mambo.task.TaskList;
 
 public class Mambo {
 
     /**
-     * Runs an instance of the Mambo chatbot
+     * Runs an instance of the Mambo.Mambo chatbot
      */
     public void run() {
         Ui ui = new Ui();

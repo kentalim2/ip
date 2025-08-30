@@ -1,3 +1,20 @@
+package Mambo.parser;
+
+import Mambo.MamboException;
+import Mambo.command.ByeCommand;
+import Mambo.command.Command;
+import Mambo.command.DeadlineCommand;
+import Mambo.command.DeleteCommand;
+import Mambo.command.EventCommand;
+import Mambo.command.ListCommand;
+import Mambo.command.MarkCommand;
+import Mambo.command.ToDoCommand;
+import Mambo.command.UnmarkCommand;
+import Mambo.task.DeadlineTask;
+import Mambo.task.EventTask;
+import Mambo.task.Task;
+import Mambo.task.ToDoTask;
+
 /**
  * Represents a parser used to handle all operations which involve parsing an input
  *
@@ -37,11 +54,11 @@ public class Parser {
     }
 
     /**
-     * Returns a line of the TaskList data file as its represented Task.
-     * Throws MamboException when a task that corresponds to the text input is not found.
+     * Returns a line of the Mambo.Task.Task.TaskList data file as its represented Mambo.Mambo.Mambo.Task.Task.
+     * Throws Mambo.MamboException when a task that corresponds to the text input is not found.
      *
      * @param nextLine One line of the data file used to store the current tasklist
-     * @return Task represented by one line of data file
+     * @return Mambo.Mambo.Mambo.Task.Task represented by one line of data file
      * @throws MamboException When no task is found that corresponds to text input
      */
     public static Task parseFile(String nextLine) throws MamboException {
@@ -57,7 +74,7 @@ public class Parser {
             return new EventTask(taskComponents[2], Boolean.parseBoolean(taskComponents[1]),
                     taskComponents[3], taskComponents[4]);
         default:
-            throw new MamboException("Task not found");
+            throw new MamboException("Mambo.Mambo.Mambo.Task.Task not found");
         }
     }
 }

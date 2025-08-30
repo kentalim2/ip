@@ -1,3 +1,11 @@
+package Mambo.command;
+
+import Mambo.MamboException;
+import Mambo.TaskListFile;
+import Mambo.Ui;
+import Mambo.task.DeadlineTask;
+import Mambo.task.TaskList;
+
 public class DeadlineCommand extends Command {
 
     public DeadlineCommand(String argument) {
@@ -10,7 +18,7 @@ public class DeadlineCommand extends Command {
      * Prints out confirmation/failure message sent by chatbot when command is done executing.
      * Throws an exception when the argument of the deadline task does not follow the required format.
      *
-     * @param tasks Task List that is being tracked by chatbot
+     * @param tasks Mambo.Mambo.Mambo.Task.Task List that is being tracked by chatbot
      * @param file Saved local file containing tasks
      * @throws MamboException Throws exception non-proper format is used to add task
      */
@@ -19,7 +27,7 @@ public class DeadlineCommand extends Command {
         String[] taskDetails = this.getArgument().split("/by");
         // if deadline is not formatted correctly, [description, deadline], throw an error message
         if (taskDetails.length != 2) {
-            throw new MamboException("are you sure you are following the proper formatfor deadline tasks? "
+            throw new MamboException("are you sure you are following the proper format for deadline tasks? "
                     + "it should look like this: \"deadline *description* /by *time/date*\"");
         }
         System.out.println(ui.respond(tasks.addToList(new DeadlineTask(taskDetails[0].trim(),

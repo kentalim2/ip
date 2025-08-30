@@ -1,6 +1,12 @@
+package Mambo.command;
+
+import Mambo.MamboException;
+import Mambo.task.TaskList;
+import Mambo.TaskListFile;
+import Mambo.Ui;
 
 public abstract class Command {
-    private String argument;
+    private final String argument;
 
     public Command(String argument) {
         this.argument = argument;

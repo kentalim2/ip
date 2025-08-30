@@ -47,7 +47,8 @@ you have 3 tasks in your list!
 
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-are you sure you are following the proper formatfor deadline tasks? it should look like this: "deadline *description* /by *time/date*"
+are you sure you are following the proper format for deadline tasks? it should look like this: "deadline *description*
+/by *time/date*"
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 

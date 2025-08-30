@@ -1,3 +1,5 @@
+package Mambo;
+
 import java.util.Scanner;
 
 public class Ui {
@@ -30,7 +32,7 @@ public class Ui {
     public String sendEntry() {
         this.sc = new Scanner(System.in);
 
-        return respond("hi! I'm Mambo, your personal assistant and chatbot!\n"
+        return respond("hi! I'm Mambo.Mambo, your personal assistant and chatbot!\n"
                 + "what can I do for you today? ei, ei mun!")
                 + COMMAND_LIST + LINE;
     }

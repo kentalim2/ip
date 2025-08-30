@@ -1,3 +1,5 @@
+package Mambo.task;
+
 /**
  * Represents a task that is to be tracked by the chatbot
  * Supports common functionality such as marking/unmarking a task as done

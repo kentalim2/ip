@@ -1,3 +1,10 @@
+package Mambo.command;
+
+import Mambo.MamboException;
+import Mambo.TaskListFile;
+import Mambo.Ui;
+import Mambo.task.TaskList;
+
 public class DeleteCommand extends Command {
 
     public DeleteCommand(String argument) {
@@ -10,7 +17,7 @@ public class DeleteCommand extends Command {
      * Throws an exception when trying to delete a task not in the list or integers
      * are not used to refer to the task trying to be deleted
      *
-     * @param tasks Task List that is being tracked by chatbot
+     * @param tasks Mambo.Mambo.Mambo.Task.Task List that is being tracked by chatbot
      * @param file Saved local file containing tasks
      * @throws MamboException Occurs when trying to access out of bounds task or wrong command format
      */

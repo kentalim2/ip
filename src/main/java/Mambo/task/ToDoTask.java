@@ -1,3 +1,5 @@
+package Mambo.task;
+
 /**
  * Represents a task which does not have any deadlines or dates attached to it
  *
