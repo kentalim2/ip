@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Ui {
     private static final String LINE = "\n───────────────────────────────────────────────────────────────"
             + "───────────────────────────────────────────────────────────────────────\n";
@@ -13,6 +15,8 @@ public class Ui {
             + "\"unmark *number*\": unmark a task at *number* on the list\n"
             + "\"delete *number*\": delete task number *number* on the list";
 
+    private Scanner sc;
+
     /**
      * Returns a message that the chatbot is supposed to send formatted with 2 long continuous lines.
      *
@@ -24,6 +28,8 @@ public class Ui {
     }
 
     public String sendEntry() {
+        this.sc = new Scanner(System.in);
+
         return respond("hi! I'm Mambo, your personal assistant and chatbot!\n"
                 + "what can I do for you today? ei, ei mun!")
                 + COMMAND_LIST + LINE;
@@ -33,5 +39,12 @@ public class Ui {
         return respond("byee, see you again!");
     }
 
+    public void closeScanner() {
+        sc.close();
+    }
+
+    public String readInput() {
+        return sc.nextLine().trim();
+    }
 
 }
