@@ -10,16 +10,33 @@ public class TaskList {
     private LinkedList<Task> list = new LinkedList<>();
 
 
+    /**
+     * Adds a task to the task list
+     *
+     * @param task Task to be added to the task list
+     * @return Message confirming that task has been added to list.
+     */
     public String addToList(Task task) {
         list.add(task);
         return String.format("I've added the task to your list:\n   %s\nyou have %d tasks in your list!",
                 task, list.size());
     }
 
+    /**
+     * Returns the given task at the index specified
+     *
+     * @param index Index of task that user is trying to obtain
+     * @return Task at specified index
+     */
     public Task getTask(int index) {
         return list.get(index - 1);
     }
 
+    /**
+     * Returns the size of the task list
+     *
+     * @return Size of task list as an integer
+     */
     public int listSize() {
         return list.size();
     }

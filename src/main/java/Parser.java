@@ -1,5 +1,7 @@
 /**
- * Represents the class used to handle all operations which involve parsing an input
+ * Represents a parser used to handle all operations which involve parsing an input
+ *
+ * @author kentalim2
  */
 public class Parser {
 
@@ -8,8 +10,8 @@ public class Parser {
      * specific commands that the chatbot offers functionality for
      * If user input is not any of the existing commands, it will throw an error
      *
-     * @param input the line of input from user
-     * @return the command that is given to the chatbot if any
+     * @param input The line of input from user
+     * @return The command that is given to the chatbot if any
      */
     public static Mambo.Command parseCommand(String input) throws MamboException {
         if (input.equalsIgnoreCase("bye")) {
@@ -35,12 +37,12 @@ public class Parser {
     }
 
     /**
-     * Given an input that uses a command which has an argument, returns that argument as a string
+     * Returns that argument as a string given an input that uses a command which has an argument,
      * by removing the letters of the command from the input
      *
-     * @param input   given to chatbot
-     * @param command the command which the chatbot is trying to perform
-     * @return string representation of argument
+     * @param input Text input given to chatbot
+     * @param command The command which the chatbot is trying to perform
+     * @return String representation of argument
      */
     public static String getArgument(Mambo.Command command, String input) {
         return switch (command) {
@@ -58,8 +60,8 @@ public class Parser {
      * Throws an exception when a non integer is passed through or the number
      * is out of bounds of the list.
      *
-     * @param argument the index of the task to mark
-     * @param list     the list of tasks
+     * @param argument The index of the task to mark
+     * @param list The list of tasks
      */
     public static String handleMark(String argument, TaskList list) throws MamboException {
         try {
@@ -84,8 +86,8 @@ public class Parser {
      * Throws an exception when a non integer is passed through or the number
      * is out of bounds of the list.
      *
-     * @param argument the index of the task to unmark
-     * @param list     the list of tasks
+     * @param argument The index of the task to unmark
+     * @param list The list of tasks
      */
     public static String handleUnmark(String argument, TaskList list) throws MamboException {
         try {
@@ -109,10 +111,10 @@ public class Parser {
      * Throws an exception when trying to delete a task not in the list or integers
      * are not used to refer to the task trying to be deleted
      *
-     * @param argument the number of the task to be deleted
-     * @param list     the current task list
-     * @return chatbot message to be sent based on outcome of function
-     * @throws MamboException when trying to access out of bounds task or wrong command format
+     * @param argument The number of the task to be deleted
+     * @param list The current task list
+     * @return Chatbot message to be sent based on outcome of function
+     * @throws MamboException Occurs when trying to access out of bounds task or wrong command format
      */
     public static String handleDelete(String argument, TaskList list) throws MamboException {
         try {
@@ -136,11 +138,11 @@ public class Parser {
      * Throws exception if improper format is used by making sure the comparing the size
      * of the split() array returned with the number of segments in each command
      *
-     * @param taskDetails created by calling split on the input to divide input into sections
-     * @param command     the command that it is executing
-     * @param list        the current task list
+     * @param taskDetails Created by calling split on the input to divide input into sections
+     * @param command The command that it is executing
+     * @param list The current task list
      * @return String representation of what chatbot will send back to user
-     * @throws MamboException which is caused by wrong formatting of command
+     * @throws MamboException Caused by wrong formatting of command
      */
     public static String handleTaskAdding(String[] taskDetails,
                                            Mambo.Command command, TaskList list) throws MamboException {
@@ -173,6 +175,14 @@ public class Parser {
         return "";
     }
 
+    /**
+     * Returns a line of the TaskList data file as its represented Task.
+     * Throws MamboException when a task that corresponds to the text input is not found.
+     *
+     * @param nextLine One line of the data file used to store the current tasklist
+     * @return Task represented by one line of data file
+     * @throws MamboException When no task is found that corresponds to text input
+     */
     public static Task parseFile(String nextLine) throws MamboException {
         String[] taskComponents = nextLine.split(" / ");
 

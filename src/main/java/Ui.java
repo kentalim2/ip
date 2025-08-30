@@ -14,8 +14,7 @@ public class Ui {
             + "\"delete *number*\": delete task number *number* on the list";
 
     /**
-     * Takes a message that the chatbot is supposed to send and formats it with 2 long continuous lines.
-     * Returns that message.
+     * Returns a message that the chatbot is supposed to send formatted with 2 long continuous lines.
      *
      * @param message
      * @return formatted message block to be sent by chatbot
