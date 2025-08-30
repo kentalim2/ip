@@ -19,6 +19,11 @@ public abstract class Task {
         this.isDone = isDone;
     }
 
+    /**
+     * Returns the file format representation of any task as a string to be written into the data file
+     *
+     * @return File format representation of task as a String
+     */
     public abstract String convertToFileFormat();
 
     public String getDescription() {

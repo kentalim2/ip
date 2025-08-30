@@ -6,10 +6,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Represents a system used to handle all operations involving saving a task list locally.
+ * Able to handle operations to initialize the task list save file, load the task list
+ * saved in the file and write to the save file when the chatbot closes.
+ *
+ * @author kentalim2
+ */
 public class TaskListFile {
     private static final Path DATA_DIRECTORY = Paths.get("data");
     private static final Path FILE_PATH = DATA_DIRECTORY.resolve("tasklist.txt");
 
+    /**
+     * Initializes the data/tasklist.txt data file if it does not already exist
+     */
     public void initializeFile() {
         try {
             if (!Files.exists(DATA_DIRECTORY)) {
@@ -26,6 +36,12 @@ public class TaskListFile {
         }
     }
 
+    /**
+     * Returns the TaskList that has been saved locally by reading through the file of inputs and
+     * adding the specific tasks to the list
+     *
+     * @return TaskList to be passed into the chatbot as its current TaskList
+     */
     public TaskList loadFile() {
         TaskList tasks = new TaskList();
 
@@ -46,6 +62,12 @@ public class TaskListFile {
         return tasks;
     }
 
+    /**
+     * Save the given tasklist into the system by writing over the previous
+     * save file.
+     *
+     * @param list TaskList to be saved into the system locally
+     */
     public void saveFile(TaskList list) {
         try {
             List<String> tempList = new ArrayList<>();
