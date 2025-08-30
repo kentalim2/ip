@@ -1,15 +1,15 @@
 package Mambo.parser;
 
 import Mambo.MamboException;
-import Mambo.command.ByeCommand;
-import Mambo.command.Command;
-import Mambo.command.DeadlineCommand;
-import Mambo.command.DeleteCommand;
-import Mambo.command.EventCommand;
-import Mambo.command.ListCommand;
-import Mambo.command.MarkCommand;
-import Mambo.command.ToDoCommand;
-import Mambo.command.UnmarkCommand;
+import Mambo.ByeCommand;
+import Mambo.Command;
+import Mambo.DeadlineCommand;
+import Mambo.DeleteCommand;
+import Mambo.EventCommand;
+import Mambo.ListCommand;
+import Mambo.MarkCommand;
+import Mambo.ToDoCommand;
+import Mambo.UnmarkCommand;
 import Mambo.task.DeadlineTask;
 import Mambo.task.EventTask;
 import Mambo.task.Task;

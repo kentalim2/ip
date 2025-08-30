@@ -1,8 +1,5 @@
-package Mambo.command;
+package Mambo;
 
-import Mambo.MamboException;
-import Mambo.TaskListFile;
-import Mambo.Ui;
 import Mambo.task.DeadlineTask;
 import Mambo.task.TaskList;
 

@@ -1,9 +1,6 @@
-package Mambo.command;
+package Mambo;
 
-import Mambo.MamboException;
 import Mambo.task.TaskList;
-import Mambo.TaskListFile;
-import Mambo.Ui;
 
 public abstract class Command {
     private final String argument;
@@ -20,6 +17,6 @@ public abstract class Command {
 
     public boolean continueRunning() {
         return true;
-    };
+    }
 
 }

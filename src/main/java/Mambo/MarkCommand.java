@@ -1,8 +1,5 @@
-package Mambo.command;
+package Mambo;
 
-import Mambo.MamboException;
-import Mambo.TaskListFile;
-import Mambo.Ui;
 import Mambo.task.TaskList;
 
 public class MarkCommand extends Command {

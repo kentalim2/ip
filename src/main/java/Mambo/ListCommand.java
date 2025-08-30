@@ -1,7 +1,5 @@
-package Mambo.command;
+package Mambo;
 
-import Mambo.TaskListFile;
-import Mambo.Ui;
 import Mambo.task.TaskList;
 
 public class ListCommand extends Command {
