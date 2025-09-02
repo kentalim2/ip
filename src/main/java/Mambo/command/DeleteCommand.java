@@ -1,5 +1,8 @@
-package Mambo;
+package Mambo.command;
 
+import Mambo.MamboException;
+import Mambo.TaskListFile;
+import Mambo.Ui;
 import Mambo.task.TaskList;
 
 public class DeleteCommand extends Command {

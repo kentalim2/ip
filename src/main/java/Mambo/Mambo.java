@@ -1,5 +1,6 @@
 package Mambo;
 
+import Mambo.command.Command;
 import Mambo.parser.Parser;
 import Mambo.task.TaskList;
 
@@ -23,7 +24,7 @@ public class Mambo {
                 String input = ui.readInput();
                 Command c = Parser.parseCommand(input);
                 c.execute(ui, list, file);
-                isRunning = c.continueRunning();
+                isRunning = c.isRunning();
 
               // catch any exceptions thrown by any of the commands
             } catch (MamboException e) {

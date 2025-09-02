@@ -52,6 +52,4 @@ public abstract class Task {
             return String.format("[ ] %s", this.description);
         }
     }
-
-
 }

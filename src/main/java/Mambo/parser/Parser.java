@@ -1,15 +1,15 @@
 package Mambo.parser;
 
 import Mambo.MamboException;
-import Mambo.ByeCommand;
-import Mambo.Command;
-import Mambo.DeadlineCommand;
-import Mambo.DeleteCommand;
-import Mambo.EventCommand;
-import Mambo.ListCommand;
-import Mambo.MarkCommand;
-import Mambo.ToDoCommand;
-import Mambo.UnmarkCommand;
+import Mambo.command.ByeCommand;
+import Mambo.command.Command;
+import Mambo.command.DeadlineCommand;
+import Mambo.command.DeleteCommand;
+import Mambo.command.EventCommand;
+import Mambo.command.ListCommand;
+import Mambo.command.MarkCommand;
+import Mambo.command.ToDoCommand;
+import Mambo.command.UnmarkCommand;
 import Mambo.task.DeadlineTask;
 import Mambo.task.EventTask;
 import Mambo.task.Task;
@@ -62,19 +62,23 @@ public class Parser {
      * @throws MamboException When no task is found that corresponds to text input
      */
     public static Task parseFile(String nextLine) throws MamboException {
-        String[] taskComponents = nextLine.split(" / ");
+        try {
+            String[] taskComponents = nextLine.split(" / ");
 
-        switch (taskComponents[0]) {
-        case "T":
-            return new ToDoTask(taskComponents[2], Boolean.parseBoolean(taskComponents[1]));
-        case "D":
-            return new DeadlineTask(taskComponents[2], Boolean.parseBoolean(taskComponents[1]),
-                    taskComponents[3]);
-        case "E":
-            return new EventTask(taskComponents[2], Boolean.parseBoolean(taskComponents[1]),
-                    taskComponents[3], taskComponents[4]);
-        default:
-            throw new MamboException("Mambo.Mambo.Mambo.Task.Task not found");
+            switch (taskComponents[0]) {
+            case "T":
+                return new ToDoTask(taskComponents[2], Boolean.parseBoolean(taskComponents[1]));
+            case "D":
+                return new DeadlineTask(taskComponents[2], Boolean.parseBoolean(taskComponents[1]),
+                        taskComponents[3]);
+            case "E":
+                return new EventTask(taskComponents[2], Boolean.parseBoolean(taskComponents[1]),
+                        taskComponents[3], taskComponents[4]);
+            default:
+                throw new MamboException("task not found");
+            }
+        } catch (Exception e) {
+            throw new MamboException("file is corrupted");
         }
     }
 }

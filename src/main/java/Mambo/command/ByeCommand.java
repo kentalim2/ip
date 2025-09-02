@@ -1,5 +1,7 @@
-package Mambo;
+package Mambo.command;
 
+import Mambo.TaskListFile;
+import Mambo.Ui;
 import Mambo.task.TaskList;
 
 public class ByeCommand extends Command {
@@ -15,7 +17,7 @@ public class ByeCommand extends Command {
     }
 
     @Override
-    public boolean continueRunning() {
+    public boolean isRunning() {
         return false;
     }
 }
