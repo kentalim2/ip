@@ -54,11 +54,11 @@ public class Parser {
     }
 
     /**
-     * Returns a line of the Mambo.Task.Task.TaskList data file as its represented Mambo.Mambo.Mambo.Task.Task.
+     * Returns a line of the TaskList data file as its represented Task
      * Throws Mambo.MamboException when a task that corresponds to the text input is not found.
      *
      * @param nextLine One line of the data file used to store the current tasklist
-     * @return Mambo.Mambo.Mambo.Task.Task represented by one line of data file
+     * @return Task represented by one line of data file
      * @throws MamboException When no task is found that corresponds to text input
      */
     public static Task parseFile(String nextLine) throws MamboException {

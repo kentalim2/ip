@@ -4,6 +4,11 @@ import Mambo.TaskListFile;
 import Mambo.Ui;
 import Mambo.task.TaskList;
 
+/**
+ * Represents a single "bye" command that has been passed into the chatbot.
+ *
+ * @author kentalim2
+ */
 public class ByeCommand extends Command {
 
     public ByeCommand(String argument) {
@@ -16,6 +21,10 @@ public class ByeCommand extends Command {
         ui.closeScanner();
     }
 
+    /**
+     * Returns false boolean to end chatbot program
+     * @return False to signify the end of the program
+     */
     @Override
     public boolean isRunning() {
         return false;

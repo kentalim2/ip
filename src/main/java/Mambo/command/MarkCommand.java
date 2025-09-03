@@ -5,6 +5,11 @@ import Mambo.TaskListFile;
 import Mambo.Ui;
 import Mambo.task.TaskList;
 
+/**
+ * Represents a single "mark" command that has been passed into the chatbot.
+ *
+ * @author kentalim2
+ */
 public class MarkCommand extends Command {
 
     public MarkCommand(String argument) {
@@ -18,7 +23,7 @@ public class MarkCommand extends Command {
      * Throws an exception when a non integer is passed through or the number
      * is out of bounds of the list.
      *
-     * @param tasks Mambo.Mambo.Mambo.Task.Task List that is being tracked by chatbot
+     * @param tasks Task List that is being tracked by chatbot
      * @param file Saved local file containing tasks
      * @throws MamboException Throws exception when non integer is passed through or item is out of bounds
      */
