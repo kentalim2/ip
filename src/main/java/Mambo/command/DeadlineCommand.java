@@ -18,7 +18,7 @@ public class DeadlineCommand extends Command {
      * Prints out confirmation/failure message sent by chatbot when command is done executing.
      * Throws an exception when the argument of the deadline task does not follow the required format.
      *
-     * @param tasks Mambo.Mambo.Mambo.Task.Task List that is being tracked by chatbot
+     * @param tasks Task List that is being tracked by chatbot
      * @param file Saved local file containing tasks
      * @throws MamboException Throws exception non-proper format is used to add task
      */

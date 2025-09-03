@@ -44,7 +44,6 @@ public class DateTimeParser {
 
 
     private static final DateTimeFormatter DISPLAY_DATETIME = DateTimeFormatter.ofPattern("MMM dd yyyy, h:mm a");
-    private static final DateTimeFormatter DISPLAY_DATE = DateTimeFormatter.ofPattern("MMM dd yyyy");
 
     private static final Pattern DATETIME_PATTERN =
         Pattern.compile("^(.*?)\\s+"
@@ -111,9 +110,5 @@ public class DateTimeParser {
 
     public static String formatDateTime(LocalDateTime dateTime) {
         return dateTime.format(DISPLAY_DATETIME);
-    }
-
-    public static String formatDate(LocalDate date) {
-        return date.format(DISPLAY_DATE);
     }
 }

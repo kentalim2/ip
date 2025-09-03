@@ -43,10 +43,10 @@ public class TaskListFile {
     }
 
     /**
-     * Returns the Mambo.Task.Task.TaskList that has been saved locally by reading through the file of inputs and
+     * Returns the TaskList that has been saved locally by reading through the file of inputs and
      * adding the specific tasks to the list
      *
-     * @return Mambo.Task.Task.TaskList to be passed into the chatbot as its current Mambo.Task.Task.TaskList
+     * @return TaskList to be passed into the chatbot as its current TaskList
      */
     public TaskList loadFile() {
         TaskList tasks = new TaskList();
