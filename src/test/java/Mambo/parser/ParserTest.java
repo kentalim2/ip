@@ -1,9 +1,14 @@
 package Mambo.parser;
 
 import Mambo.MamboException;
-import Mambo.command.*;
-import Mambo.task.EventTask;
-import Mambo.task.ToDoTask;
+import Mambo.command.ByeCommand;
+import Mambo.command.DeadlineCommand;
+import Mambo.command.DeleteCommand;
+import Mambo.command.EventCommand;
+import Mambo.command.ListCommand;
+import Mambo.command.MarkCommand;
+import Mambo.command.ToDoCommand;
+import Mambo.command.UnmarkCommand;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
