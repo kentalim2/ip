@@ -16,6 +16,16 @@ public class EventTask extends Task {
     private LocalDateTime startDateTime;
     private LocalDateTime endDateTime;
 
+    /**
+     * Creates a new instance of the event task.
+     * If start and end time passed through into input follows a recognized date time format, represent the
+     * start and end time as a LocalDateTime
+     *
+     * @param description Description of task
+     * @param isDone Whether the task is done or not
+     * @param start Start of task in input
+     * @param end End of task in input
+     */
     public EventTask(String description, boolean isDone, String start, String end) {
         super(description, isDone);
         this.start = start;
@@ -34,6 +44,12 @@ public class EventTask extends Task {
         }
     }
 
+    /**
+     * If start is represented as a LocalDateTime, return string representation of the date and time.
+     * Else return start.
+     *
+     * @return Start of task as String
+     */
     public String getStart() {
         if (this.startDateTime != null) {
             return DateTimeParser.formatDateTime(startDateTime);
@@ -42,6 +58,12 @@ public class EventTask extends Task {
         }
     }
 
+    /**
+     * If end is represented as a LocalDateTime, return string representation of the date and time.
+     * Else return end.
+     *
+     * @return End of task as String
+     */
     public String getEnd() {
         if (this.endDateTime != null) {
             return DateTimeParser.formatDateTime(endDateTime);

@@ -14,7 +14,7 @@ public abstract class Task {
      * Constructs a new task with the specified description.
      * The task is not completed by default and isDone is set to false
      *
-     * @param description of the task
+     * @param description Description of the task
      */
     public Task(String description, boolean isDone) {
         this.description = description;
@@ -36,14 +36,25 @@ public abstract class Task {
         return this.isDone;
     }
 
+    /**
+     * Sets the status of the task to be done
+     */
     public void mark() {
         this.isDone = true;
     }
 
+    /**
+     * Sets the status of the task to be not done
+     */
     public void unmark() {
         this.isDone = false;
     }
 
+    /**
+     * Returns the string representation of a task based on what kind of task it is.
+     *
+     * @return String representation of a task
+     */
     @Override
     public String toString() {
         if (isDone) {

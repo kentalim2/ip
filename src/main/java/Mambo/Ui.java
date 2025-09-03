@@ -2,6 +2,11 @@ package Mambo;
 
 import java.util.Scanner;
 
+/**
+ * Represents the system used to handle all user interface (Ui) operations of the chatbot.
+ * Provides functionality for reading an input from the user and formatting the chatbot message
+ * with two horizontal lines
+ */
 public class Ui {
     private static final String LINE = "\n───────────────────────────────────────────────────────────────"
             + "───────────────────────────────────────────────────────────────────────\n";
@@ -29,6 +34,12 @@ public class Ui {
         return LINE + message + LINE;
     }
 
+    /**
+     * Starts the chatbot by opening a new scanner to take in the inputs of users.
+     * Also sends a welcome message to the users.
+     *
+     * @return Confirmation message that chatbot is running
+     */
     public String sendEntry() {
         this.sc = new Scanner(System.in);
 
@@ -37,6 +48,10 @@ public class Ui {
                 + COMMAND_LIST + LINE;
     }
 
+    /**
+     * Sends an exit message through to the chatbot for the user to see
+     * @return Exit message as a String
+     */
     public String sendExit() {
         return respond("byee, see you again!");
     }
@@ -45,6 +60,11 @@ public class Ui {
         sc.close();
     }
 
+    /**
+     * Returns user input as a String after trimming down the whitespaces.
+     *
+     * @return Input given by user after trimming whitespaces on sides of input
+     */
     public String readInput() {
         return sc.nextLine().trim();
     }

@@ -5,6 +5,11 @@ import Mambo.TaskListFile;
 import Mambo.Ui;
 import Mambo.task.TaskList;
 
+/**
+ * Represents a single "delete" command that has been passed into the chatbot.
+ *
+ * @author kentalim2
+ */
 public class DeleteCommand extends Command {
 
     public DeleteCommand(String argument) {

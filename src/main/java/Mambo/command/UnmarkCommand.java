@@ -5,6 +5,11 @@ import Mambo.TaskListFile;
 import Mambo.Ui;
 import Mambo.task.TaskList;
 
+/**
+ * Represents a single "unmark" command that has been passed into the chatbot.
+ *
+ * @author kentalim2
+ */
 public class UnmarkCommand extends Command {
 
     public UnmarkCommand(String argument) {

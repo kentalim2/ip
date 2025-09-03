@@ -6,6 +6,11 @@ import Mambo.Ui;
 import Mambo.task.DeadlineTask;
 import Mambo.task.TaskList;
 
+/**
+ * Represents a single "deadline" command that has been passed into the chatbot.
+ *
+ * @author kentalim2
+ */
 public class DeadlineCommand extends Command {
 
     public DeadlineCommand(String argument) {

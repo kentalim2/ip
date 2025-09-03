@@ -4,7 +4,8 @@ import java.util.LinkedList;
 
 /**
  * Representation of the list of tasks that is stored by the chatbot
- * Supports functionality such as adding and removing tasks
+ * Supports functionality such as adding and removing tasks, returning size of list
+ * and deleting tasks.
  *
  * @author kentalim2
  */
@@ -54,8 +55,8 @@ public class TaskList {
      * Marks the task at index as done.
      * Will send an error message if task is already marked as done.
      *
-     * @param index of task to be marked done
-     * @return chatbot message stating that the operation is done
+     * @param index Index of task to be marked done
+     * @return Chatbot message stating that the operation is done
      */
     public String markTask(int index) {
         Task target = list.get(index - 1);
@@ -71,8 +72,8 @@ public class TaskList {
      * Unmarks the task at index.
      * Will send error message if task is already set as unmarked.
      *
-     * @param index of task to be unmarked
-     * @return chatbot message stating that the operation is done
+     * @param index Index of task to be unmarked
+     * @return Chatbot message stating that the operation is done
      */
     public String unmarkTask(int index) {
         Task target = list.get(index - 1);
@@ -86,8 +87,8 @@ public class TaskList {
 
     /**
      * Deletes the task at index
-     * @param index
-     * @return chatbot message stating that the task has been removed
+     * @param index Index of task to delete
+     * @return Chatbot message confirming that the task has been removed
      */
     public String deleteTask(int index) {
         Task target = list.remove(index - 1);
@@ -96,6 +97,11 @@ public class TaskList {
 
     }
 
+    /**
+     * Returns the string representation of a task list to be displayed by the chatbot
+     *
+     * @return String representation of task list
+     */
     @Override
     public String toString() {
         StringBuilder message = new StringBuilder();

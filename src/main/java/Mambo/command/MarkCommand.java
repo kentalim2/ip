@@ -5,6 +5,11 @@ import Mambo.TaskListFile;
 import Mambo.Ui;
 import Mambo.task.TaskList;
 
+/**
+ * Represents a single "mark" command that has been passed into the chatbot.
+ *
+ * @author kentalim2
+ */
 public class MarkCommand extends Command {
 
     public MarkCommand(String argument) {

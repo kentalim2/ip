@@ -6,6 +6,11 @@ import Mambo.Ui;
 import Mambo.task.TaskList;
 import Mambo.task.ToDoTask;
 
+/**
+ * Represents a single "todo" command that has been passed into the chatbot.
+ *
+ * @author kentalim2
+ */
 public class ToDoCommand extends Command {
 
     public ToDoCommand(String argument) {

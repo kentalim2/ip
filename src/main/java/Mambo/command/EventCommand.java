@@ -6,6 +6,11 @@ import Mambo.Ui;
 import Mambo.task.EventTask;
 import Mambo.task.TaskList;
 
+/**
+ * Represents a single "event" command that has been passed into the chatbot.
+ *
+ * @author kentalim2
+ */
 public class EventCommand extends Command {
 
     public EventCommand(String argument) {
