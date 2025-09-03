@@ -15,7 +15,7 @@ public class TaskList {
     /**
      * Adds a task to the task list
      *
-     * @param task Mambo.Mambo.Mambo.Task.Task to be added to the task list
+     * @param task Task to be added to the task list
      * @return Message confirming that task has been added to list.
      */
     public String addToList(Task task) {
@@ -25,10 +25,17 @@ public class TaskList {
     }
 
     /**
+     * Returns true if the list is empty, false otherwise
+     */
+    public boolean isEmpty() {
+        return list.isEmpty();
+    }
+
+    /**
      * Returns the given task at the index specified
      *
      * @param index Index of task that user is trying to obtain
-     * @return Mambo.Mambo.Mambo.Task.Task at specified index
+     * @return Task at specified index
      */
     public Task getTask(int index) {
         return list.get(index - 1);

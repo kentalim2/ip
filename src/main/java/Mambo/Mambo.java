@@ -7,7 +7,7 @@ import Mambo.task.TaskList;
 public class Mambo {
 
     /**
-     * Runs an instance of the Mambo.Mambo chatbot
+     * Runs an instance of the Mambochatbot
      */
     public void run() {
         Ui ui = new Ui();
