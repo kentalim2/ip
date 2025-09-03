@@ -19,6 +19,7 @@ public class DeadlineTask extends Task {
         this.deadline = deadline;
         try {
            deadlineDateTime = DateTimeParser.parseDateTime(deadline);
+
         } catch (DateTimeParseException e) {
             deadlineDateTime = null;
         }

@@ -19,7 +19,7 @@ public class ToDoCommand extends Command {
      *
      * @param tasks Task List that is being tracked by chatbot
      * @param file Saved local file containing tasks
-     * @throws MamboException Throws exception non-proper format is used to add task
+     * @throws MamboException Throws exception when non-proper format is used to add task
      */
     @Override
     public void execute(Ui ui, TaskList tasks, TaskListFile file) throws MamboException {

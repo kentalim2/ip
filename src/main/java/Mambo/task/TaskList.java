@@ -25,6 +25,13 @@ public class TaskList {
     }
 
     /**
+     * Returns true if the list is empty, false otherwise
+     */
+    public boolean isEmpty() {
+        return list.isEmpty();
+    }
+
+    /**
      * Returns the given task at the index specified
      *
      * @param index Index of task that user is trying to obtain
