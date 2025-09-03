@@ -1,15 +1,7 @@
 package Mambo.parser;
 
 import Mambo.MamboException;
-import Mambo.command.ByeCommand;
-import Mambo.command.Command;
-import Mambo.command.DeadlineCommand;
-import Mambo.command.DeleteCommand;
-import Mambo.command.EventCommand;
-import Mambo.command.ListCommand;
-import Mambo.command.MarkCommand;
-import Mambo.command.ToDoCommand;
-import Mambo.command.UnmarkCommand;
+import Mambo.command.*;
 import Mambo.task.DeadlineTask;
 import Mambo.task.EventTask;
 import Mambo.task.Task;
@@ -47,18 +39,20 @@ public class Parser {
             return new ToDoCommand(input.substring(4).trim());
         } else if (input.toLowerCase().startsWith("delete")) {
             return new DeleteCommand(input.substring(6).trim());
+        } else if (input.toLowerCase().startsWith("find")) {
+            return new FindCommand(input.substring(4).trim());
         } else {
-            throw new MamboException("ummm not sure what that's supposed to mean. "
-                    + "try one of the commands listed!");
+                throw new MamboException("ummm not sure what that's supposed to mean. "
+                        + "try one of the commands listed!");
         }
     }
 
     /**
-     * Returns a line of the Mambo.Task.Task.TaskList data file as its represented Mambo.Mambo.Mambo.Task.Task.
+     * Returns a line of the TaskList data file as its represented Task.
      * Throws Mambo.MamboException when a task that corresponds to the text input is not found.
      *
      * @param nextLine One line of the data file used to store the current tasklist
-     * @return Mambo.Mambo.Mambo.Task.Task represented by one line of data file
+     * @return Task represented by one line of data file
      * @throws MamboException When no task is found that corresponds to text input
      */
     public static Task parseFile(String nextLine) throws MamboException {
