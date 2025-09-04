@@ -29,13 +29,17 @@ test {
 }
 
 application {
-    mainClass.set("Mambo.Mambo")
+    mainClass.set("mambo.Mambo")
 }
 
 shadowJar {
     archiveBaseName = "Mambo"
     archiveFileName = "mambo.jar"
     archiveClassifier = null
+}
+
+checkstyle {
+    toolVersion = '11.0.0'
 }
 
 run{
