@@ -5,47 +5,69 @@ import mambo.parser.Parser;
 import mambo.task.TaskList;
 
 /**
- * Represents the Mambo chatbot, supporting the functionality of running the program.
+ * Represents the Mambo chatbot.
+ * Supports functionality for getting a chatbot response.
  *
  * @author kentalim2
  */
 public class Mambo {
+    private Ui ui;
+    private boolean isRunning;
+    private TaskList list;
+    private TaskListFileManager file;
+    private String commandType;
 
     /**
-     * Runs an instance of the Mambo chatbot.
-     * Starts by loading existing task list if any into system.
-     * The chatbot will read inputs from user line by line and execute the respective command.
-     * This function then makes sure current task list is saved locally when the chatbot is closed.
+     * Initializes a new instance of the Mambo chatbot.
+     * If there is an existing tasklist that is saved into the system, load that file.
      */
-    public void run() {
-        Ui ui = new Ui();
-        boolean isRunning = true;
-        TaskList list;
-        TaskListFile file = new TaskListFile();
-
+    public Mambo() {
+        this.ui = new Ui();
+        this.isRunning = true;
+        this.file = new TaskListFileManager();
         file.initializeFile();
         list = file.loadFile();
-        System.out.println(ui.sendEntry());
+        this.commandType = "";
 
-        while (isRunning) {
-            try {
-                String input = ui.readInput();
-                Command c = Parser.parseCommand(input);
-                c.execute(ui, list, file);
-                isRunning = c.isRunning();
-            // catch any exceptions thrown by any of the commands
-            } catch (MamboException e) {
-                System.out.println(ui.respond(e.getMessage()));
-            }
+    }
 
-        }
-        file.saveFile(list);
+    public String getCommandType() {
+        return this.commandType;
     }
 
     /**
-     * Creates a new instance of the Mambo chatbot and runs it
+     * Generates the welcome message to be sent by chatbot.
+     *
+     * @return Welcome message
      */
-    public static void main(String[] args) {
-        new Mambo().run();
+    public String getWelcome() {
+        return this.ui.sendEntry();
+    }
+
+    /**
+     * Generates a response for the users input message.
+     * If the user's input is an input which is supposed to end the program, it will save the current
+     * task list locally then end the program.
+     *
+     * @param input User input
+     * @return Chatbot response
+     */
+    public String getResponse(String input) {
+        try {
+            Command c = Parser.parseCommand(input);
+            String response = c.execute(ui, list, file);
+            isRunning = c.isRunning();
+            commandType = c.getClass().getSimpleName();
+
+            if (!isRunning) {
+                file.saveFile(list);
+            }
+
+            return response;
+
+        // catch any exceptions thrown by any of the commands
+        } catch (MamboException e) {
+            return e.getMessage();
+        }
     }
 }
