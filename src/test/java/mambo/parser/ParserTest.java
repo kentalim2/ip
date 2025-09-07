@@ -105,7 +105,7 @@ public class ParserTest {
     public void parseFileTestToDo() {
         try {
             assertEquals("(T) [ ] die",
-                    Parser.parseFile("T / false / die").toString());
+                    Parser.parseLineInFile("T / false / die").toString());
         } catch (MamboException e) {
             assertEquals("no exception thrown", "exception thrown");
         }
@@ -115,7 +115,7 @@ public class ParserTest {
     public void parseFileTestDeadline() {
         try {
             assertEquals("(D) [X] work (by: monday)",
-                    Parser.parseFile("D / true / work / monday").toString());
+                    Parser.parseLineInFile("D / true / work / monday").toString());
         } catch (MamboException e) {
             assertEquals("no exception thrown", "exception thrown");
         }
@@ -125,7 +125,7 @@ public class ParserTest {
     public void parseFileTestEvent() {
         try {
             assertEquals("(E) [ ] dinner (from: 4pm -> to: 6pm)",
-                    Parser.parseFile("E / false / dinner / 4pm / 6pm").toString());
+                    Parser.parseLineInFile("E / false / dinner / 4pm / 6pm").toString());
         } catch (MamboException e) {
             assertEquals("no exception thrown", "exception thrown");
         }
@@ -134,7 +134,7 @@ public class ParserTest {
     @Test
     public void parseFileTestCorrupted() {
         try {
-            Parser.parseFile("E / false / dinner / 4pm ");
+            Parser.parseLineInFile("E / false / dinner / 4pm ");
         } catch (MamboException e) {
             assertEquals("file is corrupted", e.getMessage());
         }

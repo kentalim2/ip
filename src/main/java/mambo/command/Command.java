@@ -1,7 +1,7 @@
 package mambo.command;
 
 import mambo.MamboException;
-import mambo.TaskListFile;
+import mambo.TaskListFileManager;
 import mambo.Ui;
 import mambo.task.TaskList;
 
@@ -21,7 +21,7 @@ public abstract class Command {
         return this.argument;
     }
 
-    public abstract void execute(Ui ui, TaskList tasks, TaskListFile file) throws MamboException;
+    public abstract String execute(Ui ui, TaskList tasks, TaskListFileManager file) throws MamboException;
 
     /**
      * Returns true except on Bye command when program will end

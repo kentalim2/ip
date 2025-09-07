@@ -19,7 +19,7 @@ import mambo.task.TaskList;
  *
  * @author kentalim2
  */
-public class TaskListFile {
+public class TaskListFileManager {
     private static final Path DATA_DIRECTORY = Paths.get("data");
     private static final Path FILE_PATH = DATA_DIRECTORY.resolve("tasklist.txt");
 
@@ -56,7 +56,7 @@ public class TaskListFile {
             Scanner scanner = new Scanner(FILE_PATH);
             while (scanner.hasNext()) {
                 String nextTask = scanner.nextLine();
-                tasks.addToList(Parser.parseFile(nextTask));
+                tasks.addToList(Parser.parseLineInFile(nextTask));
             }
 
         } catch (MamboException e) {

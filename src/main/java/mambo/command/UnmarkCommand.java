@@ -1,7 +1,7 @@
 package mambo.command;
 
 import mambo.MamboException;
-import mambo.TaskListFile;
+import mambo.TaskListFileManager;
 import mambo.Ui;
 import mambo.task.TaskList;
 
@@ -19,16 +19,17 @@ public class UnmarkCommand extends Command {
     /**
      * Executes unmark command by handling the unmarking of tasks on the list by parsing out
      * index of list the user wants to unmark and passing it into unmarkTask().
-     * Prints out confirmation/failure message sent by chatbot when command is done executing.
+     * Returns confirmation/failure message sent by chatbot when command is done executing.
      * Throws an exception when a non integer is passed through or the number
      * is out of bounds of the list.
      *
      * @param tasks Task List that is being tracked by chatbot
      * @param file Saved local file containing tasks
+     * @return Chatbot message
      * @throws MamboException Throws exception when non integer is passed through or item is out of bounds
      */
     @Override
-    public void execute(Ui ui, TaskList tasks, TaskListFile file) throws MamboException {
+    public String execute(Ui ui, TaskList tasks, TaskListFileManager file) throws MamboException {
         try {
             int index = Integer.parseInt(this.getArgument());
 
@@ -37,7 +38,7 @@ public class UnmarkCommand extends Command {
                 throw new MamboException("your list doesnt have a task at that number dummy!");
             }
 
-            System.out.println(ui.respond(tasks.unmarkTask(index)));
+            return tasks.unmarkTask(index);
         } catch (NumberFormatException e) {
             // throw error when an exception is caught due to the argument not being an integer
             throw new MamboException("hey!! this is not the right way to use unmark. "

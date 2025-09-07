@@ -1,7 +1,7 @@
 package mambo.command;
 
 import mambo.MamboException;
-import mambo.TaskListFile;
+import mambo.TaskListFileManager;
 import mambo.Ui;
 import mambo.task.TaskList;
 
@@ -17,14 +17,15 @@ public class ListCommand extends Command {
     }
 
     /**
-     * Displays the current list of tasks to the user
+     * Returns the current list of tasks to display to the user
      *
      * @param tasks Task List that is being tracked by chatbot
      * @param file Saved local file containing tasks
+     * @return Chatbot message
      * @throws MamboException Throws exception non-proper format is used to add task
      */
     @Override
-    public void execute(Ui ui, TaskList tasks, TaskListFile file) {
-        System.out.println(ui.respond("these are your tasks!\n" + tasks));
+    public String execute(Ui ui, TaskList tasks, TaskListFileManager file) {
+        return "these are your tasks!\n" + tasks;
     }
 }

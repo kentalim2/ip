@@ -1,6 +1,6 @@
 package mambo.command;
 
-import mambo.TaskListFile;
+import mambo.TaskListFileManager;
 import mambo.Ui;
 import mambo.task.TaskList;
 
@@ -16,9 +16,9 @@ public class ByeCommand extends Command {
     }
 
     @Override
-    public void execute(Ui ui, TaskList tasks, TaskListFile file) {
-        System.out.println(ui.sendExit());
-        ui.closeScanner();
+    public String execute(Ui ui, TaskList tasks, TaskListFileManager file) {
+        return ui.sendExit();
+
     }
 
     /**

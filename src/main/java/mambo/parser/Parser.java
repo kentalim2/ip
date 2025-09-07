@@ -64,7 +64,7 @@ public class Parser {
      * @return Task represented by one line of data file
      * @throws MamboException When no task is found that corresponds to text input
      */
-    public static Task parseFile(String nextLine) throws MamboException {
+    public static Task parseLineInFile(String nextLine) throws MamboException {
         try {
             String[] taskComponents = nextLine.split(" / ");
 

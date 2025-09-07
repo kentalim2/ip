@@ -8,8 +8,6 @@ import java.util.Scanner;
  * with two horizontal lines
  */
 public class Ui {
-    private static final String LINE = "\n───────────────────────────────────────────────────────────────"
-            + "───────────────────────────────────────────────────────────────────────\n";
 
     // list of commands available communicated by the chatbot at the start
     private static final String COMMAND_LIST = "List of commands:\n"
@@ -25,16 +23,6 @@ public class Ui {
     private Scanner sc;
 
     /**
-     * Returns a message that the chatbot is supposed to send formatted with 2 long continuous lines.
-     *
-     * @param message
-     * @return formatted message block to be sent by chatbot
-     */
-    public String respond(String message) {
-        return LINE + message + LINE;
-    }
-
-    /**
      * Starts the chatbot by opening a new scanner to take in the inputs of users.
      * Also sends a welcome message to the users.
      *
@@ -43,9 +31,9 @@ public class Ui {
     public String sendEntry() {
         this.sc = new Scanner(System.in);
 
-        return respond("hi! I'm Mambo.Mambo, your personal assistant and chatbot!\n"
-                + "what can I do for you today? ei, ei mun!")
-                + COMMAND_LIST + LINE;
+        return "hi! I'm mambo, your personal assistant and chatbot!\n"
+                + "what can I do for you today? ei, ei mun!\n\n"
+                + COMMAND_LIST;
     }
 
     /**
@@ -53,11 +41,7 @@ public class Ui {
      * @return Exit message as a String
      */
     public String sendExit() {
-        return respond("byee, see you again!");
-    }
-
-    public void closeScanner() {
-        sc.close();
+        return "byee, see you again!";
     }
 
     /**
