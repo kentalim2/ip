@@ -32,10 +32,11 @@ public class DeleteCommand extends Command {
         try {
             int index = Integer.parseInt(this.getArgument());
 
-            // to catch if trying to access out of bounds index
+            // prevent a call to an out-of-bounds index
             if (index < 1 || index > tasks.listSize()) {
                 throw new MamboException("theres nothing to delete at that number!");
             }
+            assert(index >= 1 && index <= tasks.listSize());
             return tasks.deleteTask(index);
 
         } catch (NumberFormatException e) {

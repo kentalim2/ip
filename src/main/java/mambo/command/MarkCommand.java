@@ -33,11 +33,11 @@ public class MarkCommand extends Command {
         try {
             int index = Integer.parseInt(this.getArgument());
 
-            // to catch if trying to access out of bounds index
+            // prevent a call to an out-of-bounds index
             if (index < 1 || index > tasks.listSize()) {
                 throw new MamboException("your list doesnt have a task at that number dummy!");
             }
-
+            assert(index >= 1 && index <= tasks.listSize());
             return tasks.markTask(index);
         } catch (NumberFormatException e) {
             // throw error when an exception is caught due to the argument not being an integer
