@@ -17,6 +17,11 @@ public class EventCommand extends Command {
         super(argument);
     }
 
+    @Override
+    public String[] splitArgumentIntoDetails() {
+        return this.getArgument().split("/from|/to");
+    }
+
     /**
      * Adds an event task to the current list.
      * Gets description and deadline of task by splitting argument at "/from" and "/to".
@@ -30,7 +35,7 @@ public class EventCommand extends Command {
      */
     @Override
     public String execute(Ui ui, TaskList tasks, TaskListFileManager file) throws MamboException {
-        String[] taskDetails = this.getArgument().split("/from|/to");
+        String[] taskDetails = splitArgumentIntoDetails();
         // if event is not formatted correctly, [description, start, end], throw an error
         if (taskDetails.length != 3) {
             throw new MamboException("are you sure you are following the proper format for events? "
