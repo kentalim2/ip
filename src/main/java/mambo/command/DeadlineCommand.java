@@ -17,6 +17,11 @@ public class DeadlineCommand extends Command {
         super(argument);
     }
 
+    @Override
+    public String[] splitArgumentIntoDetails() {
+        return this.getArgument().split("/by");
+    }
+
     /**
      * Adds a deadline task to the current list.
      * Gets description and deadline of task by splitting argument at "/by".
@@ -30,7 +35,7 @@ public class DeadlineCommand extends Command {
      */
     @Override
     public String execute(Ui ui, TaskList tasks, TaskListFileManager file) throws MamboException {
-        String[] taskDetails = this.getArgument().split("/by");
+        String[] taskDetails = splitArgumentIntoDetails();
         // if deadline is not formatted correctly, [description, deadline], throw an error message
         if (taskDetails.length != 2) {
             throw new MamboException("are you sure you are following the proper format for deadline tasks? "

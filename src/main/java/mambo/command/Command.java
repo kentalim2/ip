@@ -32,6 +32,18 @@ public abstract class Command {
     }
 
     /**
+     * Takes the argument of a command and splits it with the regex to return a string array where
+     * each index is one detail of the command argument.
+     * If command does not have argument, does nothing.
+     *
+     * @return Array of String containing details of command if command has argument.
+     *         Empty array of strings otherwise.
+     */
+    public String[] splitArgumentIntoDetails() {
+        return new String[] { };
+    }
+
+    /**
      * Compares if one command and another are equal by first checking if their types are the exact
      * same, then comparing the arguments of each command.
      * Commands are considered to be equal when they are of the same type and have the same argument.
