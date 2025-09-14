@@ -41,7 +41,7 @@ public class DialogBox extends HBox {
     }
 
     /**
-     * Change the dialog box colour based on the type of command that is being passed through.
+     * Changes the dialog box colour based on the type of command that is being passed through.
      *
      * @param commandType The command type that is being passed into the chatbot as a string
      */
