@@ -41,6 +41,7 @@ public class EventCommand extends Command {
             throw new MamboException("are you sure you are following the proper format for events? "
                     + "it should look like this: \"event *description* /from *time* /to time\"");
         }
+        assert(taskDetails.length == 3);
         return tasks.addToList(new EventTask(taskDetails[0].trim(),
                 false,
                 taskDetails[1].trim(),
