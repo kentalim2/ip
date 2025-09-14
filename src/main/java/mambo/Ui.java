@@ -18,7 +18,8 @@ public class Ui {
             + "\"event *task* /from *start* /to *end*\": add event task with start and end time/date\n"
             + "\"mark *number*\": mark a task at *number* on the list to be done\n"
             + "\"unmark *number*\": unmark a task at *number* on the list\n"
-            + "\"delete *number*\": delete task number *number* on the list";
+            + "\"delete *number*\": delete task number *number* on the list\n"
+            + "\"find *details*\": find all tasks with *details* in their description";
 
     private Scanner sc;
 
@@ -44,13 +45,7 @@ public class Ui {
         return "byee, see you again!";
     }
 
-    /**
-     * Returns user input as a String after trimming down the whitespaces.
-     *
-     * @return Input given by user after trimming whitespaces on sides of input
-     */
-    public String readInput() {
-        return sc.nextLine().trim();
+    public String sendHelp() {
+        return COMMAND_LIST;
     }
-
 }

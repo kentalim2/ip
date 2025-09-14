@@ -7,6 +7,7 @@ import mambo.command.DeadlineCommand;
 import mambo.command.DeleteCommand;
 import mambo.command.EventCommand;
 import mambo.command.FindCommand;
+import mambo.command.HelpCommand;
 import mambo.command.ListCommand;
 import mambo.command.MarkCommand;
 import mambo.command.ToDoCommand;
@@ -50,6 +51,8 @@ public class Parser {
             return new DeleteCommand(input.substring(6).trim());
         } else if (input.toLowerCase().startsWith("find")) {
             return new FindCommand(input.substring(4).trim());
+        } else if (input.equalsIgnoreCase("help")) {
+            return new HelpCommand("");
         } else {
             throw new MamboException("ummm not sure what that's supposed to mean. "
                     + "try one of the commands listed!");
