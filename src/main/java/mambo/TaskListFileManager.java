@@ -69,7 +69,7 @@ public class TaskListFileManager {
     }
 
     /**
-     * Save the given tasklist into the system by writing over the previous
+     * Saves the given tasklist into the system by writing over the previous
      * save file.
      *
      * @param list TaskList to be saved into the system locally

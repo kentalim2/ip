@@ -45,7 +45,7 @@ public class EventTask extends Task {
     }
 
     /**
-     * If start is represented as a LocalDateTime, return string representation of the date and time.
+     * Returns string representation of the date and time if start is represented as a LocalDateTime.
      * Else return start.
      *
      * @return Start of task as String
