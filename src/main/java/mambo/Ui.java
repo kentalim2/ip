@@ -32,7 +32,7 @@ public class Ui {
     public String sendEntry() {
         this.sc = new Scanner(System.in);
 
-        return "hi! I'm mambo, your personal assistant and chatbot!\n"
+        return "hey trainer! I'm mambo, your personal assistant!\n"
                 + "what can I do for you today? ei, ei mun!\n\n"
                 + COMMAND_LIST;
     }
