@@ -34,6 +34,7 @@ public class Main extends Application {
             Scene scene = new Scene(ap);
             stage.setScene(scene);
             fxmlLoader.<MainWindow>getController().setMambo(mambo); // inject the Mambo instance
+            stage.setTitle("Mambo");
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
