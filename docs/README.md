@@ -8,7 +8,7 @@ interface (GUI) built with JavaFX while retaining the functionality of a command
 ---
 
 ## Quick Start
-1. Ensure you have **Java 11 or above** installed on your computer.
+1. Ensure you have **Java 17 or above** installed on your computer.
 2. Download the latest **mambo.jar** file from the releases page.
 3. Open a terminal, navigate to the folder containing the JAR file, and run:
 
