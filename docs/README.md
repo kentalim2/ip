@@ -3,6 +3,7 @@
 Mambo is a desktop chatbot application that helps you manage your tasks efficiently. It features a graphical user 
 interface (GUI) built with JavaFX while retaining the functionality of a command-line interface.
 
+![Mambo ChatBot Interface](https://kentalim2.github.io/ip/Ui.png)
 
 ---
 
